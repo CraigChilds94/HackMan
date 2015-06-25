@@ -11,7 +11,7 @@ var Wall = (function(world, properties) {
     };
 
     var graphics = new PIXI.Graphics();
-    graphics.beginFill(0xFFFFFF);
+    graphics.beginFill(0x0000DB);
     graphics.drawRect(position.x, position.y, size.width, size.height);
 
     function checkPlayerCollision()
