@@ -33,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         game.world.player.update();
 
+        for(index in game.world.collectables) {
+            var collectable = game.world.collectables[index];
+            checkCollision(game.world.player, collectable);
+        }
+
         // render the root container
         renderer.render(stage);
     }
@@ -49,6 +54,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for (var i = 0; i < game.world.collectables.length; i++) {
             stage.addChild(game.world.collectables[i].sprite);
-        }        
+        }
     }
+
+    function checkCollision(object1, object2)
+    {
+        var sprite1 = object1.sprite;
+        var sprite2 = object2.sprite;
+
+        var xdist = sprite1.x - sprite2.x;
+
+		if(xdist > -sprite1.width && xdist < sprite1.width)
+		{
+			var ydist = sprite1.position.y - sprite2.position.y;
+
+			if(ydist > -sprite1.height && ydist < sprite1.height)
+			{
+				object1.onCollision(object2);
+                object2.onCollision(object1);
+			}
+		}
+    }
+
 });
