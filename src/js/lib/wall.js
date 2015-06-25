@@ -23,7 +23,7 @@ var Wall = (function(world, properties) {
 		{
 			var ydist = (playerSprite.position.y + world.player.delta.y) - position.y;
 
-			if(ydist > -playerSprite.height && ydist + size.height/2 < playerSprite.height)
+			if(ydist > -playerSprite.height && ydist + size.height*2 < playerSprite.height)
 			{
 				world.player.hitWall = true;
                 return;

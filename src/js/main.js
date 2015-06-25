@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         PIXI: PIXI
     };
 
+    var bg = new world.PIXI.Sprite.fromImage('/src/img/map1.png');
+    stage.addChild(bg);
+
     // Create the game object
     var game = new Game(world);
 
@@ -49,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var collidables = game.world.collectables.concat(game.world.ghosts);
 
-        for(index in collidables) {            
+        for(index in collidables) {
             checkCollision(game.world.player, collidables[index]);
         }
 
@@ -60,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function createGameObjects()
     {
         game.world.walls = [
-            new Wall(game.world, {x:300, y:300, width: 10, height: 100})
+            new Wall(game.world, {x:200, y:200, width: 50, height: 50})
         ];
 
         for(index in game.world.walls) {
@@ -78,11 +81,11 @@ document.addEventListener("DOMContentLoaded", function() {
         game.world.collectables = [
             new Collectable(game.world, {x: 400, y: 400})
         ];
-        
+
         var objs = game.world.collectables.concat(game.world.ghosts);
 
         for (var i = 0; i < objs.length; i++) {
-            stage.addChild(objs[i].sprite);
+            // stage.addChild(objs[i].sprite);
         }
     }
 
@@ -105,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function() {
     				collidable.onCollision(player);
                     player.collidingWith.push(collidable);
                 }
-                return;                    
+                return;
             }
         }
         if (collidingWith) {
-            player.collidingWith.splice(player.collidingWith.indexOf(collidable),1);            
+            player.collidingWith.splice(player.collidingWith.indexOf(collidable),1);
         }
     }
 
