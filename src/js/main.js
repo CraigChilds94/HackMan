@@ -43,5 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
         // Create a player and add it to the stage
         game.world.player = new Player(game.world, {x: 0, y: 0});
         stage.addChild(game.world.player.sprite);
+
+        game.world.collectables = [
+            new Collectable(game.world, {x: 400, y: 400})
+        ];
+
+        for (var i = 0; i < game.world.collectables.length; i++) {
+            stage.addChild(game.world.collectables[i].sprite);
+        }        
     }
 });
