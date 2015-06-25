@@ -83,8 +83,8 @@ var Player = (function(world, position) {
     {
         if(world.player.canMove) {
             if(!world.player.hitWall && inBounds()) {
-                sprite.position.x += delta.x * 2;
-                sprite.position.y += delta.y * 2;
+                sprite.position.x += delta.x * 1.6;
+                sprite.position.y += delta.y * 1.6;
             }
         }
     }

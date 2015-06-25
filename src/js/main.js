@@ -64,9 +64,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     if(world.player.drinking) {
                         world.player.canMove = true;
                         world.player.drinking = false;
-
-                        clearInterval(interval);
-                        setInterval(drinkText, drinkingDelay);
                     }
                 }
             });
@@ -265,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 185}),
             new Collectable(game.world, {x: 580, y: 185}),
             new Collectable(game.world, {x: 620, y: 185}),
-            new Collectable(game.world, {x: 660, y: 185}),            
+            new Collectable(game.world, {x: 660, y: 185}),
             new Collectable(game.world, {x: 240, y: 245}),
             new Collectable(game.world, {x: 280, y: 245}),
             new Collectable(game.world, {x: 320, y: 245}),
@@ -274,7 +271,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 460, y: 245}),
             new Collectable(game.world, {x: 500, y: 245}),
             new Collectable(game.world, {x: 540, y: 245}),
-            new Collectable(game.world, {x: 580, y: 245}),            
+            new Collectable(game.world, {x: 580, y: 245}),
             new Collectable(game.world, {x: 160, y: 305}),
             new Collectable(game.world, {x: 200, y: 305}),
             new Collectable(game.world, {x: 240, y: 305}),
@@ -287,7 +284,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 305}),
             new Collectable(game.world, {x: 580, y: 305}),
             new Collectable(game.world, {x: 620, y: 305}),
-            new Collectable(game.world, {x: 660, y: 305}),            
+            new Collectable(game.world, {x: 660, y: 305}),
             new Collectable(game.world, {x: 240, y: 365}),
             new Collectable(game.world, {x: 280, y: 365}),
             new Collectable(game.world, {x: 320, y: 365}),
@@ -296,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 460, y: 365}),
             new Collectable(game.world, {x: 500, y: 365}),
             new Collectable(game.world, {x: 540, y: 365}),
-            new Collectable(game.world, {x: 580, y: 365}),            
+            new Collectable(game.world, {x: 580, y: 365}),
             new Collectable(game.world, {x: 120, y: 405}),
             new Collectable(game.world, {x: 160, y: 405}),
             new Collectable(game.world, {x: 200, y: 405}),
@@ -310,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 405}),
             new Collectable(game.world, {x: 580, y: 405}),
             new Collectable(game.world, {x: 620, y: 405}),
-            new Collectable(game.world, {x: 660, y: 405}),            
+            new Collectable(game.world, {x: 660, y: 405}),
             new Collectable(game.world, {x: 120, y: 470}),
             new Collectable(game.world, {x: 160, y: 470}),
             new Collectable(game.world, {x: 200, y: 470}),
@@ -324,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 470}),
             new Collectable(game.world, {x: 580, y: 470}),
             new Collectable(game.world, {x: 620, y: 470}),
-            new Collectable(game.world, {x: 660, y: 470}),            
+            new Collectable(game.world, {x: 660, y: 470}),
             new Collectable(game.world, {x: 120, y: 525}),
             new Collectable(game.world, {x: 160, y: 525}),
             new Collectable(game.world, {x: 200, y: 525}),
