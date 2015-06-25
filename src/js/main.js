@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var renderer = new PIXI.WebGLRenderer(800, 600);
 
     // Add the render view to the body
-    document.body.appendChild(renderer.view);
+    document.getElementById('canvas').appendChild(renderer.view);
 
     // Create Game stage
     var stage = new PIXI.Container();
@@ -23,8 +23,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Bind the game events after we've created everything
     game.bindEvents();
 
-    // actually render
-    render();
+    setTimeout(function() {
+        // actually render
+        render();
+    }, 1000);
+
 
     function render() {
         requestAnimationFrame(render);
