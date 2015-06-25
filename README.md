@@ -2,8 +2,8 @@
 PubHack project
 
 ## What to do?
- - [ ] Get something moving
- - [ ] Collision
+ - [x] Get something moving
+ - [x] Collision
  - [ ] Scoring
  - [ ] Extra Features
     - [ ] Government Angency Ghosts
