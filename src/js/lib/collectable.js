@@ -1,7 +1,19 @@
-var Collectable = (function(world, position) {
+var Collectable = (function(world, position,type) {
 
-    // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');    
+    var sprite
+
+    switch (type)
+    {
+        case 'data-mine':
+            sprite = new world.PIXI.Sprite.fromImage('/src/img/data-mine.png');    
+            break;
+        default :
+            var sprite = new PIXI.Graphics();
+            sprite.beginFill(0xFFFFFFF);
+            sprite.drawRect(position.x, position.y, 20, 20);
+            // sprite.setAnchor(0.5,0.5);
+            break;
+    }
 
     // Reset the position of the sprite
     sprite.position = position; 
