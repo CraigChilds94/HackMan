@@ -28,6 +28,51 @@ document.addEventListener("DOMContentLoaded", function() {
         PIXI: PIXI
     };
 
+    var drinkingDelay = 30000;
+    var drinkText = function() {
+
+        var message = "Drink Now.";
+
+        var style = {
+            font: '70px courier new',
+            fill: '#ffffff'
+        };
+
+        var text = new PIXI.Text(message, style);
+        text.x = 230;
+        text.y = 200;
+        world.stage.addChild(text);
+
+        world.player.canMove = false;
+
+        $(document).on('keydown', function(e) {
+            e = e || window.event;
+            if (e.keyCode == '32') {
+                world.player.drinking = true;
+
+                setTimeout(function () {
+                    world.stage.removeChild(text);
+                }, 1000);
+            }
+        });
+
+        $(document).on('keyup', function(e) {
+            e = e || window.event;
+            if (e.keyCode == '32') {
+
+                if(world.player.drinking) {
+                    world.player.canMove = true;
+                    world.player.drinking = false;
+
+                    clearInterval(interval);
+                    setInterval(drinkText, drinkingDelay);
+                }
+            }
+        });
+    };
+
+    var interval = setInterval(drinkText, drinkingDelay);
+
     // var bg = new world.PIXI.Sprite.fromImage('/src/img/map1.png');
     // stage.addChild(bg);
 
@@ -75,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Top & bottom walls
             new Wall(game.world, {x:100, y:50, width: 600, height: 3}),
             new Wall(game.world, {x:100, y:550, width: 600, height: 3}),
-            
+
             // Side walls
             new Wall(game.world, {x:100, y:50, width: 3, height: 170}),
             new Wall(game.world, {x:100, y:380, width: 3, height: 170}),
