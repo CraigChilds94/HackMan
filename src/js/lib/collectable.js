@@ -19,16 +19,16 @@ var Collectable = (function(world, position,type) {
     sprite.position = position;
 
     function onCollision() {
-        
+
         var points;
-        
+
         switch (type)
         {
             case 'data-mine':
-                points = 10;
+                points = 50;
                 break;
             case 'beer':
-                points = 5;
+                points = 10;
                 break;
             default:
                 points = 1;
