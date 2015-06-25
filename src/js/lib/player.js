@@ -1,7 +1,7 @@
 var Player = (function(world, position) {
 
     // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');
+    var sprite = new world.PIXI.Sprite.fromImage('/src/img/hm-thin-r.png');
 
     var hitWall = false;
 
