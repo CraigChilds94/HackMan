@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function() {
         render();
     }, 1000);
 
-
     function render() {
         requestAnimationFrame(render);
 
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function createGameObjects()
     {
         // Create a player and add it to the stage
-        game.world.player = new Player(game.world, {x: 0, y: 0});
+        game.world.player = new Player(game.world, {x: 1, y: 1});
         stage.addChild(game.world.player.sprite);
 
         game.world.collectables = [
