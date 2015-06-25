@@ -8,10 +8,7 @@ var Collectable = (function(world, position,type) {
             sprite = new world.PIXI.Sprite.fromImage('/src/img/data-mine.png');
             break;
         default :
-            var sprite = new PIXI.Graphics();
-            sprite.beginFill(0xFFFFFFF);
-            sprite.drawRect(position.x, position.y, 20, 20);
-            // sprite.setAnchor(0.5,0.5);
+            var sprite = new world.PIXI.Sprite.fromImage('/src/img/box2.png');
             break;
     }
 
