@@ -23,6 +23,8 @@ var Ghost = (function(world, position, type) {
         y: 1
     };
 
+    sprite.scale = {x: 0.9, y: 0.9};
+
     // Reset the position of the sprite
     sprite.position = position;
 
@@ -35,7 +37,11 @@ var Ghost = (function(world, position, type) {
         }
         else {
         	delta.x = getRandomDelta();
-        	delta.y = delta.x == 0 ? getRandomDelta() : 0;
+        	delta.y = 0;
+
+            while(delta.y == 0 && delta.x == 0) {
+                delta.y = getRandomDelta();
+            }
         }
     }
 

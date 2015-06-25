@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
             [0,0,1,1,1,1,1,1],
             [0,0,1,1,1,1,1,1]
         ]);
-        
+
         for (index in game.world.ghosts) {
             stage.addChild(game.world.ghosts[index].sprite);
         }
