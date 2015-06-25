@@ -19,18 +19,31 @@ var Wall = (function(world, properties) {
         var playerSprite = world.player.sprite;
         var xdist = (playerSprite.x + world.player.delta.x) - position.x;
 
-		if(xdist > -playerSprite.width && xdist < size.width)
+        var collidingWith = world.player.collidingWith.indexOf(this) !== -1;
+
+        if(xdist > -playerSprite.width && xdist < size.width)
 		{
 			var ydist = (playerSprite.position.y + world.player.delta.y) - position.y;
 
-			if(ydist > -playerSprite.height && ydist + size.height*2 < playerSprite.height)
+			if(ydist > -playerSprite.height && ydist < size.height)
 			{
-				world.player.hitWall = true;
+                if (!collidingWith) {
+    				onCollision(world.player);
+                    world.player.collidingWith.push(this);
+                }
                 return;
 			}
 		}
 
-        world.player.hitWall = false;
+        if (collidingWith) {
+            world.player.hitWall = false;
+            world.player.collidingWith.splice(world.player.collidingWith.indexOf(this), 1);
+        }
+    }
+
+    function onCollision()
+    {
+        world.player.hitWall = true;
     }
 
     return {

@@ -67,11 +67,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function createGameObjects()
     {
+
+        // Create a player and add it to the stage
+        game.world.player = new Player(game.world, {x: 1, y: 1});
+
         game.world.walls = [
             // Top & bottom walls
             new Wall(game.world, {x:100, y:50, width: 600, height: 3}),
             new Wall(game.world, {x:100, y:550, width: 600, height: 3}),
-
+            
             // Side walls
             new Wall(game.world, {x:100, y:50, width: 3, height: 170}),
             new Wall(game.world, {x:100, y:380, width: 3, height: 170}),
@@ -142,10 +146,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for(index in game.world.walls) {
             stage.addChild(game.world.walls[index].rectangle);
+            game.world.walls[index].checkPlayerCollision();
         }
 
-        // Create a player and add it to the stage
-        game.world.player = new Player(game.world, {x: 1, y: 1});
         stage.addChild(game.world.player.sprite);
 
         game.world.ghosts = [
@@ -156,16 +159,16 @@ document.addEventListener("DOMContentLoaded", function() {
             //This should be the super collectable
             // new Collectable(game.world, {x: 400, y: 400})
         ];
-        
-        generateCollectables([
-            [0,1,1,1,1,0,0,0],
-            [1,1,1,1,1,1,1,1]
-        ]);
-        
+
+        // generateCollectables([
+        //     [0,1,1,1,1,0,0,0],
+        //     [1,1,1,1,1,1,1,1]
+        // ]);
+
         var objs = game.world.collectables.concat(game.world.ghosts);
 
         for (index in objs) {
-            stage.addChild(objs[index].sprite);
+            //stage.addChild(objs[index].sprite);
         }
     }
 
@@ -178,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (arr[y][x] == 1) {
                     var tmp = new Collectable(game.world,{x: x*colWidth, y: y*colWidth});
                     game.world.collectables.push(tmp);
-                    stage.addChild(tmp.sprite);                    
+                    stage.addChild(tmp.sprite);
                 }
             }
         }
