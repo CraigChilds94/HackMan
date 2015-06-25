@@ -19,6 +19,10 @@ img {display:block;
 	background:#fff;
 }
 
+.high-score-wrapper {
+	padding-left: 15px;
+}
+
 .row {overflow:hidden;}
 
 .pull-left{float:left;}
