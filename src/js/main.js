@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function render() {
         requestAnimationFrame(render);
 
+        for(index in game.world.walls) {
+            game.world.walls[index].checkPlayerCollision();
+        }
+
         game.world.player.update();
 
         var collidables = game.world.collectables.concat(game.world.ghosts);
@@ -55,6 +59,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function createGameObjects()
     {
+        game.world.walls = [
+            new Wall(game.world, {x:300, y:300, width: 10, height: 100})
+        ];
+
+        for(index in game.world.walls) {
+            stage.addChild(game.world.walls[index].rectangle);
+        }
+
         // Create a player and add it to the stage
         game.world.player = new Player(game.world, {x: 1, y: 1});
         stage.addChild(game.world.player.sprite);

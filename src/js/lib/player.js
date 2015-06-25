@@ -3,6 +3,8 @@ var Player = (function(world, position) {
     // Load in a player image
     var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');
 
+    var hitWall = false;
+
     // deltas
     var delta = {
         x: 0,
@@ -15,7 +17,7 @@ var Player = (function(world, position) {
     // Handle updating the player
     function update()
     {
-        if(inBounds()) {
+        if(!world.player.hitWall && inBounds()) {
             sprite.position.x += delta.x;
             sprite.position.y += delta.y;
         }
@@ -37,7 +39,8 @@ var Player = (function(world, position) {
         speed: 5,
         delta: delta,
         update: update,
-        collidingWith: []        
+        collidingWith: [],        
+        hitWall: hitWall
     };
 
 });
