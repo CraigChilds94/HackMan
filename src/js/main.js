@@ -144,31 +144,31 @@ document.addEventListener("DOMContentLoaded", function() {
             new Wall(game.world, {x:530, y:170, width: 10, height:105}),
         ];
 
+        game.world.ghosts = [
+            new Ghost(game.world, {x: 101, y: 51})
+        ];
+        
         for(index in game.world.walls) {
             stage.addChild(game.world.walls[index].rectangle);
             game.world.walls[index].checkPlayerCollision();
+            game.world.walls[index].checkGhostCollision();
         }
 
         stage.addChild(game.world.player.sprite);
 
-        game.world.ghosts = [
-            new Ghost(game.world, {x: 200, y: 200})
-        ];
 
         game.world.collectables = [
             //This should be the super collectable
             // new Collectable(game.world, {x: 400, y: 400})
         ];
+        
+        generateCollectables([
+            [0,1,1,1,1,0,0,0],
+            [1,1,1,1,1,1,1,1]
+        ]);
 
-        // generateCollectables([
-        //     [0,1,1,1,1,0,0,0],
-        //     [1,1,1,1,1,1,1,1]
-        // ]);
-
-        var objs = game.world.collectables.concat(game.world.ghosts);
-
-        for (index in objs) {
-            //stage.addChild(objs[index].sprite);
+        for (index in game.world.ghosts) {
+            stage.addChild(game.world.ghosts[index].sprite);
         }
     }
 
