@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
         lives : 3,
         removeLife : function() {
             status.lives--;
-            $('#lives').text(status.lives)
+            $('#lives').text(status.lives);
+        },
+        addPoints : function(points) {
+            status.score += points;
+            $('#score').text(status.score);
         }
     };
 
@@ -54,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for(index in collidables) {
             checkCollision(game.world.player, collidables[index]);
+            collidables[index].update();
         }
 
         // render the root container
