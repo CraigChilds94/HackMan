@@ -11,7 +11,7 @@ var Game = (function(world) {
 
         var text = new PIXI.Text(message, style);
         text.x = 50;
-        text.y = 200;
+        text.y = 100;
         world.stage.addChild(text);
     };
 
@@ -26,7 +26,7 @@ var Game = (function(world) {
 
         var text = new PIXI.Text(message, style);
         text.x = 100;
-        text.y = 200;
+        text.y = 100;
         world.stage.addChild(text);
         world.status.lives = 0;
     };
