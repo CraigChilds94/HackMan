@@ -81,7 +81,7 @@ var Player = (function(world, position) {
     // Handle updating the player
     function update()
     {
-        if(world.player.canMove) {
+        if(world.player.canMove && world.status.lives > 0) {
             if(!world.player.hitWall && inBounds()) {
                 sprite.position.x += delta.x * 1.6;
                 sprite.position.y += delta.y * 1.6;
