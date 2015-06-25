@@ -203,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         stage.addChild(game.world.player.sprite);
+        game.world.player.animate();
 
 
         game.world.collectables = [
