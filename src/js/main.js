@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         game.world.collectables = [
             //This should be the super collectable
-            new Collectable(game.world, {x: 120, y: 65}),
+            new Collectable(game.world, {x: 110, y: 60},'beer'),
             new Collectable(game.world, {x: 160, y: 65}),
             new Collectable(game.world, {x: 200, y: 65}),
             new Collectable(game.world, {x: 240, y: 65}),
@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 65}),
             new Collectable(game.world, {x: 580, y: 65}),
             new Collectable(game.world, {x: 620, y: 65}),
-            new Collectable(game.world, {x: 660, y: 65}),
+            new Collectable(game.world, {x: 660, y: 65},'beer'),
             new Collectable(game.world, {x: 120, y: 125}),
             new Collectable(game.world, {x: 160, y: 125}),
             new Collectable(game.world, {x: 200, y: 125}),
@@ -276,10 +276,10 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 200, y: 305}),
             new Collectable(game.world, {x: 240, y: 305}),
             new Collectable(game.world, {x: 280, y: 305}),
-            new Collectable(game.world, {x: 320, y: 305}),
-            new Collectable(game.world, {x: 360, y: 305}),
-            new Collectable(game.world, {x: 420, y: 305}),
-            new Collectable(game.world, {x: 460, y: 305}),
+            new Collectable(game.world, {x: 320, y: 280},'data-mine'),
+            new Collectable(game.world, {x: 360, y: 280},'data-mine'),
+            new Collectable(game.world, {x: 400, y: 280},'data-mine'),
+            new Collectable(game.world, {x: 440, y: 280},'data-mine'),
             new Collectable(game.world, {x: 500, y: 305}),
             new Collectable(game.world, {x: 540, y: 305}),
             new Collectable(game.world, {x: 580, y: 305}),
@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 580, y: 470}),
             new Collectable(game.world, {x: 620, y: 470}),
             new Collectable(game.world, {x: 660, y: 470}),
-            new Collectable(game.world, {x: 120, y: 525}),
+            new Collectable(game.world, {x: 110, y: 500},'beer'),
             new Collectable(game.world, {x: 160, y: 525}),
             new Collectable(game.world, {x: 200, y: 525}),
             new Collectable(game.world, {x: 240, y: 525}),
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 540, y: 525}),
             new Collectable(game.world, {x: 580, y: 525}),
             new Collectable(game.world, {x: 620, y: 525}),
-            new Collectable(game.world, {x: 660, y: 525}),
+            new Collectable(game.world, {x: 660, y: 500},'beer'),
         ];
 
         var objs = game.world.ghosts.concat(game.world.collectables);

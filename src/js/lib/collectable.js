@@ -7,6 +7,9 @@ var Collectable = (function(world, position,type) {
         case 'data-mine':
             sprite = new world.PIXI.Sprite.fromImage('/src/img/data-mine.png');
             break;
+        case 'beer':
+            sprite = new world.PIXI.Sprite.fromImage('/src/img/beer.png');
+            break;
         default :
             var sprite = new world.PIXI.Sprite.fromImage('/src/img/box2.png');
             break;
@@ -16,7 +19,23 @@ var Collectable = (function(world, position,type) {
     sprite.position = position;
 
     function onCollision() {
-        world.status.addPoints(1);
+        
+        var points;
+        
+        switch (type)
+        {
+            case 'data-mine':
+                points = 10;
+                break;
+            case 'beer':
+                points = 5;
+                break;
+            default:
+                points = 1;
+                break;
+        }
+
+        world.status.addPoints(points);
         world.collectables.splice(world.collectables.indexOf(this),1);
         world.stage.removeChild(sprite);
 
