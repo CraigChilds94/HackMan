@@ -41,34 +41,36 @@ document.addEventListener("DOMContentLoaded", function() {
         var text = new PIXI.Text(message, style);
         text.x = 230;
         text.y = 200;
-        world.stage.addChild(text);
 
-        world.player.canMove = false;
+        if(world.status.lives > 0) {
+            world.stage.addChild(text);
+            world.player.canMove = false;
 
-        $(document).on('keydown', function(e) {
-            e = e || window.event;
-            if (e.keyCode == '32') {
-                world.player.drinking = true;
+            $(document).on('keydown', function(e) {
+                e = e || window.event;
+                if (e.keyCode == '32') {
+                    world.player.drinking = true;
 
-                setTimeout(function () {
-                    world.stage.removeChild(text);
-                }, 1000);
-            }
-        });
-
-        $(document).on('keyup', function(e) {
-            e = e || window.event;
-            if (e.keyCode == '32') {
-
-                if(world.player.drinking) {
-                    world.player.canMove = true;
-                    world.player.drinking = false;
-
-                    clearInterval(interval);
-                    setInterval(drinkText, drinkingDelay);
+                    setTimeout(function () {
+                        world.stage.removeChild(text);
+                    }, 1000);
                 }
-            }
-        });
+            });
+
+            $(document).on('keyup', function(e) {
+                e = e || window.event;
+                if (e.keyCode == '32') {
+
+                    if(world.player.drinking) {
+                        world.player.canMove = true;
+                        world.player.drinking = false;
+
+                        clearInterval(interval);
+                        setInterval(drinkText, drinkingDelay);
+                    }
+                }
+            });
+        }
     };
 
     var interval = setInterval(drinkText, drinkingDelay);
@@ -90,6 +92,8 @@ document.addEventListener("DOMContentLoaded", function() {
         render();
     }, 1000);
 
+    setInterval(addGhost, 5000);
+
     function render() {
         requestAnimationFrame(render);
 
@@ -109,6 +113,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // render the root container
         renderer.render(stage);
+    }
+
+    function addGhost()
+    {
+        var types = ['pol', 'fbi', 'nsa'];
+        var index = Math.floor( (Math.random() * 3));
+        var ghost = new Ghost(game.world, {x: 105, y: 55}, types[index]);
+
+        game.world.stage.addChild(ghost.sprite);
+        game.world.ghosts.push(ghost);
     }
 
     function createGameObjects()

@@ -21,11 +21,6 @@ var Wall = (function(world, properties) {
 
         var collidingWith = world.player.collidingWith.indexOf(this) !== -1;
 
-        if (collidingWith) {
-            world.player.hitWall = false;
-            world.player.collidingWith.splice(world.player.collidingWith.indexOf(this), 1);
-        }
-
         if(xdist > -playerSprite.width && xdist < size.width)
 		{
 			var ydist = (playerSprite.position.y + world.player.delta.y) - position.y;
@@ -39,6 +34,11 @@ var Wall = (function(world, properties) {
                 return;
 			}
 		}
+
+        if (collidingWith) {
+            world.player.hitWall = false;
+            world.player.collidingWith.splice(world.player.collidingWith.indexOf(this), 1);
+        }
     }
 
     function checkGhostCollision()
