@@ -24,8 +24,8 @@ document.addEventListener("DOMContentLoaded", function() {
         PIXI: PIXI
     };
 
-    var bg = new world.PIXI.Sprite.fromImage('/src/img/map1.png');
-    stage.addChild(bg);
+    // var bg = new world.PIXI.Sprite.fromImage('/src/img/map1.png');
+    // stage.addChild(bg);
 
     // Create the game object
     var game = new Game(world);
@@ -63,34 +63,76 @@ document.addEventListener("DOMContentLoaded", function() {
     function createGameObjects()
     {
         game.world.walls = [
+            // Top & bottom walls
             new Wall(game.world, {x:100, y:50, width: 600, height: 3}),
             new Wall(game.world, {x:100, y:550, width: 600, height: 3}),
 
+            // Side walls
             new Wall(game.world, {x:100, y:50, width: 3, height: 170}),
             new Wall(game.world, {x:100, y:380, width: 3, height: 170}),
             new Wall(game.world, {x:700, y:50, width: 3, height: 173}),
             new Wall(game.world, {x:700, y:380, width: 3, height: 173}),
 
+            // Exit walls
             new Wall(game.world, {x:100, y:380, width: 110, height: 3}),
             new Wall(game.world, {x:100, y:220, width: 110, height: 3}),
             new Wall(game.world, {x:590, y:380, width: 110, height: 3}),
             new Wall(game.world, {x:590, y:220, width: 110, height: 3}),
-
             new Wall(game.world, {x:100, y:330, width: 110, height: 3}),
             new Wall(game.world, {x:100, y:270, width: 110, height: 3}),
             new Wall(game.world, {x:590, y:330, width: 110, height: 3}),
             new Wall(game.world, {x:590, y:270, width: 110, height: 3}),
-
             new Wall(game.world, {x:210, y:330, width: 3, height: 53}),
             new Wall(game.world, {x:210, y:220, width: 3, height: 53}),
             new Wall(game.world, {x:590, y:330, width: 3, height: 53}),
             new Wall(game.world, {x:590, y:220, width: 3, height: 53}),
 
+            // Box
             new Wall(game.world, {x:317, y:260, width: 3, height: 80}),
             new Wall(game.world, {x:481, y:260, width: 3, height: 80}),
             new Wall(game.world, {x:317, y:340, width: 167, height: 3}),
             new Wall(game.world, {x:317, y:260, width: 50, height: 3}),
             new Wall(game.world, {x:431, y:260, width: 50, height: 3}),
+
+            // Internal walls
+            new Wall(game.world, {x:395, y:50, width: 10, height:60}),
+            new Wall(game.world, {x:395, y:490, width: 10, height:60}),
+
+            new Wall(game.world, {x:335, y:490, width: 60, height:10}),
+            new Wall(game.world, {x:405, y:490, width: 60, height:10}),
+
+            new Wall(game.world, {x:150, y:100, width: 180, height:10}),
+            new Wall(game.world, {x:465, y:100, width: 180, height:10}),
+
+            new Wall(game.world, {x:150, y:155, width: 60, height:10}),
+            new Wall(game.world, {x:595, y:155, width: 60, height:10}),
+
+            new Wall(game.world, {x:150, y: 490, width: 120, height:10}),
+            new Wall(game.world, {x:525, y: 490, width: 120, height:10}),
+
+            new Wall(game.world, {x:210, y: 430, width: 130, height:10}),
+            new Wall(game.world, {x:455, y: 430, width: 130, height:10}),
+
+            new Wall(game.world, {x:315, y:380, width: 90, height:10}),
+            new Wall(game.world, {x:395, y:380, width: 90, height:10}),
+
+            new Wall(game.world, {x:270, y:215, width: 70, height:10}),
+            new Wall(game.world, {x:455, y:215, width: 80, height:10}),
+
+            new Wall(game.world, {x:315, y:155, width: 90, height:10}),
+            new Wall(game.world, {x:395, y:155, width: 90, height:10}),
+
+            new Wall(game.world, {x:395, y:160, width: 10, height:60}),
+            new Wall(game.world, {x:150, y:430, width: 10, height:60}),
+
+            new Wall(game.world, {x:635, y:430, width: 10, height:60}),
+            new Wall(game.world, {x:395, y:390, width: 10, height:60}),
+
+            new Wall(game.world, {x:260, y:330, width: 10, height:105}),
+            new Wall(game.world, {x:530, y:330, width: 10, height:105}),
+
+            new Wall(game.world, {x:260, y:170, width: 10, height:105}),
+            new Wall(game.world, {x:530, y:170, width: 10, height:105}),
         ];
 
         for(index in game.world.walls) {
@@ -99,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Create a player and add it to the stage
         game.world.player = new Player(game.world, {x: 1, y: 1});
-        //stage.addChild(game.world.player.sprite);
+        stage.addChild(game.world.player.sprite);
 
         game.world.ghosts = [
             new Ghost(game.world, {x: 200, y: 200})

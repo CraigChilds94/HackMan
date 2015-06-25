@@ -11,6 +11,8 @@ var Player = (function(world, position) {
         y: 1
     };
 
+    sprite.scale = {x: 0.5, y: 0.5};
+
     // Reset the position of the sprite
     sprite.position = position;
 
@@ -39,7 +41,7 @@ var Player = (function(world, position) {
         speed: 5,
         delta: delta,
         update: update,
-        collidingWith: [],        
+        collidingWith: [],
         hitWall: hitWall
     };
 
