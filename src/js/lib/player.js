@@ -42,23 +42,23 @@ var Player = (function(world, position) {
             wagga = !wagga;
 
             if(wagga) {
-                if(direction == 'r') {
+                if(world.player.direction == 'r') {
                     world.player.sprite.texture = images[0];
-                } else if(direction == 'l') {
+                } else if(world.player.direction == 'l') {
                     world.player.sprite.texture = images[2];
-                } else if(direction == 'u') {
+                } else if(world.player.direction == 'u') {
                     world.player.sprite.texture = images[4];
-                } else if(direction == 'd') {
+                } else if(world.player.direction == 'd') {
                     world.player.sprite.texture = images[6];
                 }
             } else {
-                if(direction == 'r') {
+                if(world.player.direction == 'r') {
                     world.player.sprite.texture = images[1];
-                } else if(direction == 'l') {
+                } else if(world.player.direction == 'l') {
                     world.player.sprite.texture = images[3];
-                } else if(direction == 'u') {
+                } else if(world.player.direction == 'u') {
                     world.player.sprite.texture = images[5];
-                } else if(direction == 'd') {
+                } else if(world.player.direction == 'd') {
                     world.player.sprite.texture = images[7];
                 }
             }
@@ -97,7 +97,8 @@ var Player = (function(world, position) {
         hitWall: hitWall,
         canMove: canMove,
         drinking: false,
-        animate: animate
+        animate: animate,
+        direction: direction
     };
 
 });
