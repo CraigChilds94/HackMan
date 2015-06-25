@@ -15,6 +15,22 @@ var Game = (function(world) {
         world.stage.addChild(text);
     };
 
+    world.showWin = function() {
+
+        var message = "You won! yay!";
+
+        var style = {
+            font: '60px courier new',
+            fill: '#ffffff'
+        };
+
+        var text = new PIXI.Text(message, style);
+        text.x = 100;
+        text.y = 200;
+        world.stage.addChild(text);
+        world.status.lives = 0;
+    };
+
     /**
      * Here's where we will bind the events for our game
      */

@@ -70,6 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 }
             });
+        } else {
+            world.stage.removeChild(text);
         }
     };
 
