@@ -1,7 +1,7 @@
-var Player = (function(world, position) {
+var Ghost = (function(world, position) {
 
     // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');
+    var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');    
 
     // deltas
     var delta = {
@@ -10,7 +10,7 @@ var Player = (function(world, position) {
     };
 
     // Reset the position of the sprite
-    sprite.position = position;
+    sprite.position = position;    
 
     // Handle updating the player
     function update()
@@ -19,6 +19,14 @@ var Player = (function(world, position) {
             sprite.position.x += delta.x;
             sprite.position.y += delta.y;
         }
+        else {
+        	delta.x = getRandomDelta();
+        	delta.y = delta.x == 0 ? getRandomDelta() : 0;
+        }
+    }
+
+    function getRandomDelta() {
+    	return Math.floor( (Math.random() * 3) - 1 );
     }
 
     // Check if player in bounds
@@ -31,13 +39,17 @@ var Player = (function(world, position) {
             && (yPos >= 0 && yPos + sprite.height <= 600);
     }
 
+    function onCollision() {
+    	world.status.removeLife();
+    }
+
     // Return public data
     return {
         sprite: sprite,
         speed: 5,
         delta: delta,
         update: update,
-        collidingWith: []        
+        onCollision: onCollision
     };
 
 });

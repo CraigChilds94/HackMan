@@ -5,6 +5,7 @@
 	<script src="/src/js/lib/pixi.min.js"></script>
 	<script src="/src/js/lib/game.js"></script>
 	<script src="/src/js/lib/player.js"></script>
+	<script src="/src/js/lib/ghost.js"></script>
 	<script src="/src/js/lib/collectable.js"></script>
 	<script src="/src/js/main.js"></script>
 	<title>Hackman</title>
@@ -21,7 +22,7 @@
 			<div id="canvas"></div>
 			<div id="score">
 			<p class="pull-left">SCORE: 0</p>
-			<p class="pull-right">LIVES: 3</p>
+			<p class="pull-right">LIVES: <span id="lives">3</span></p>
 			</div>
 		</div>
 		<img src="/src/img/screensavers.gif" class="pull-left">

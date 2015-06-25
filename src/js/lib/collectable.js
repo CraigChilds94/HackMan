@@ -4,11 +4,17 @@ var Collectable = (function(world, position) {
     var sprite = new world.PIXI.Sprite.fromImage('http://placekitten.com/g/150/150');    
 
     // Reset the position of the sprite
-    sprite.position = position;    
+    sprite.position = position; 
+
+    function onCollision() {
+        world.score++;
+        world.stage.removeChild(sprite);
+    }   
 
     // Return public data
     return {
-        sprite: sprite        
+        sprite: sprite,        
+        onCollision: onCollision
     };
 
 });
