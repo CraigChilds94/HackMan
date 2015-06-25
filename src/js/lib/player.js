@@ -11,15 +11,19 @@ var Player = (function(world, position) {
         y: 1
     };
 
+    var canMove = true;
+
     // Reset the position of the sprite
     sprite.position = position;
 
     // Handle updating the player
     function update()
     {
-        if(!world.player.hitWall && inBounds()) {
-            sprite.position.x += delta.x;
-            sprite.position.y += delta.y;
+        if(world.player.canMove) {
+            if(!world.player.hitWall && inBounds()) {
+                sprite.position.x += delta.x;
+                sprite.position.y += delta.y;
+            }
         }
     }
 
@@ -40,7 +44,9 @@ var Player = (function(world, position) {
         delta: delta,
         update: update,
         collidingWith: [],
-        hitWall: hitWall
+        hitWall: hitWall,
+        canMove: canMove,
+        drinking: false
     };
 
 });
