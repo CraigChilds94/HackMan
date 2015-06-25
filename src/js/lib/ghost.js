@@ -1,7 +1,21 @@
-var Ghost = (function(world, position) {
+var Ghost = (function(world, position, type) {
+
+    var sprite;
+
+    switch(type)
+    {
+        case "pol":
+            sprite = new world.PIXI.Sprite.fromImage('/src/img/pol-r.png');
+            break;
+        case "fbi":
+            sprite = new world.PIXI.Sprite.fromImage('/src/img/fbi-r.png');
+            break;
+        case "nsa":
+            sprite = new world.PIXI.Sprite.fromImage('/src/img/nsa-r.png');
+            break;        
+    }
 
     // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('/src/img/pol-r.png'); 
 
     var hitWall = false;   
 

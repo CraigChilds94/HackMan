@@ -191,7 +191,9 @@ document.addEventListener("DOMContentLoaded", function() {
         ];
 
         game.world.ghosts = [
-            new Ghost(game.world, {x: 105, y: 55})
+            new Ghost(game.world, {x: 105, y: 55},'pol'),
+            new Ghost(game.world, {x: 655, y: 55},'fbi'),
+            new Ghost(game.world, {x: 105, y: 455},'nsa')
         ];
         
         for(index in game.world.walls) {
@@ -209,9 +211,12 @@ document.addEventListener("DOMContentLoaded", function() {
         ];
         
         generateCollectables([
-            [0,1,1,1,1,0,0,0],
-            [1,1,1,1,1,1,1,1]
+            [0,0,0,0,0,0,0,0],
+            [0,0,1,1,1,1,1,1],
+            [0,0,1,1,1,1,1,1]
         ]);
+
+
 
         for (index in game.world.ghosts) {
             stage.addChild(game.world.ghosts[index].sprite);
@@ -220,7 +225,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function generateCollectables(arr) {
 
-        var colWidth = 150;
+        var colWidth = 50;
 
         for (y in arr) {
             for (x in arr[y]) {
