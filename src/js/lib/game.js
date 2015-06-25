@@ -5,9 +5,25 @@ var Game = (function(world) {
      */
     function bindEvents()
     {
-        document.body.onkeypress = function(e) {
-            console.log(e);
-        }
+        $(document).on('keydown', function(e) {
+
+            e = e || window.event;
+
+            if (e.keyCode == '38') {
+                world.player.delta.y = -1;
+                world.player.delta.x = 0;
+            } else if (e.keyCode == '40') {
+                world.player.delta.y = 1
+                world.player.delta.x = 0;
+            } else if (e.keyCode == '37') {
+                world.player.delta.x = -1;
+                world.player.delta.y = 0;
+            } else if (e.keyCode == '39') {
+                world.player.delta.x = 1
+                world.player.delta.y = 0;
+            }
+
+        });
     }
 
     // Return public stuff

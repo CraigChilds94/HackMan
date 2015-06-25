@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
     // Create the game object
     var game = new Game(world);
 
-    // Create a player and add it to the stage
-    game.world.player = new Player(game.world, {x: 0, y: 0});
-    stage.addChild(game.world.player.sprite);
+    // Create our objectss
+    createGameObjects();
+
+    // Bind the game events after we've created everything
+    game.bindEvents();
 
     // actually render
     render();
@@ -27,7 +29,16 @@ document.addEventListener("DOMContentLoaded", function() {
     function render() {
         requestAnimationFrame(render);
 
+        game.world.player.update();
+
         // render the root container
         renderer.render(stage);
+    }
+
+    function createGameObjects()
+    {
+        // Create a player and add it to the stage
+        game.world.player = new Player(game.world, {x: 0, y: 0});
+        stage.addChild(game.world.player.sprite);
     }
 });
