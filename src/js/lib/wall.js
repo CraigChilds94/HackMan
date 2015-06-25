@@ -74,9 +74,9 @@ var Wall = (function(world, properties) {
         }
     }
 
-    function onCollision()
+    function onCollision(object)
     {
-        world.player.hitWall = true;
+        object.hitWall = true;
     }
 
     return {
