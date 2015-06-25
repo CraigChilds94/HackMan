@@ -95,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for(index in game.world.walls) {
             game.world.walls[index].checkPlayerCollision();
+            game.world.walls[index].checkGhostCollision();
         }
 
         game.world.player.update();
@@ -190,13 +191,13 @@ document.addEventListener("DOMContentLoaded", function() {
         ];
 
         game.world.ghosts = [
-            new Ghost(game.world, {x: 101, y: 51})
+            new Ghost(game.world, {x: 105, y: 55})
         ];
         
         for(index in game.world.walls) {
             stage.addChild(game.world.walls[index].rectangle);
-            game.world.walls[index].checkPlayerCollision();
-            game.world.walls[index].checkGhostCollision();
+            // game.world.walls[index].checkPlayerCollision();
+            // game.world.walls[index].checkGhostCollision();
         }
 
         stage.addChild(game.world.player.sprite);
