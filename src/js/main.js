@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
+    $('#high-score').text(window.localStorage.getItem('high-score') || 0);
+
     // Add the render view to the body
     document.getElementById('canvas').appendChild(renderer.view);
 

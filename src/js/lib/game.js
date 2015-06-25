@@ -13,6 +13,9 @@ var Game = (function(world) {
         text.x = 50;
         text.y = 100;
         world.stage.addChild(text);
+
+        window.localStorage.setItem('high-score', world.status.score);
+        $('#high-score').text(world.status.score);
     };
 
     world.showWin = function() {
@@ -26,9 +29,12 @@ var Game = (function(world) {
 
         var text = new PIXI.Text(message, style);
         text.x = 100;
-        text.y = 100;
+        text.y = 300;
         world.stage.addChild(text);
-        world.status.lives = 0;
+        world.status.lives = 99999;
+
+        window.localStorage.setItem('high-score', world.status.score);
+        $('#high-score').text(world.status.score);
     };
 
     /**
