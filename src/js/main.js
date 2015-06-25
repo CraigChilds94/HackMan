@@ -76,14 +76,36 @@ document.addEventListener("DOMContentLoaded", function() {
         ];
 
         game.world.collectables = [
-            new Collectable(game.world, {x: 400, y: 400})
+            //This should be the super collectable
+            // new Collectable(game.world, {x: 400, y: 400})
         ];
+        
+        generateCollectables([
+            [0,1,1,1,1,0,0,0],
+            [1,1,1,1,1,1,1,1]
+        ]);
         
         var objs = game.world.collectables.concat(game.world.ghosts);
 
-        for (var i = 0; i < objs.length; i++) {
-            stage.addChild(objs[i].sprite);
+        for (index in objs) {
+            stage.addChild(objs[index].sprite);
         }
+    }
+
+    function generateCollectables(arr) {
+
+        var colWidth = 150;
+
+        for (y in arr) {
+            for (x in arr[y]) {
+                if (arr[y][x] == 1) {
+                    var tmp = new Collectable(game.world,{x: x*colWidth, y: y*colWidth});
+                    game.world.collectables.push(tmp);
+                    stage.addChild(tmp.sprite);                    
+                }
+            }
+        }
+
     }
 
     function checkCollision(player, collidable)
@@ -93,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         var xdist = sprite1.x - sprite2.x;
 
-        var collidingWith = player.collidingWith.indexOf(collidable) !== -1
+        var collidingWith = player.collidingWith.indexOf(collidable) !== -1;
 
         if(xdist > -sprite1.width && xdist < sprite1.width)
         {
