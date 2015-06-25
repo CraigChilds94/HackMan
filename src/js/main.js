@@ -195,6 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         stage.addChild(game.world.player.sprite);
+        game.world.player.animate();
 
         game.world.ghosts = [
             new Ghost(game.world, {x: 200, y: 200})

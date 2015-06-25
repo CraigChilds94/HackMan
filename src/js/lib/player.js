@@ -1,8 +1,4 @@
 var Player = (function(world, position) {
-
-    // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('/src/img/hm-thin-r.png');
-
     var hitWall = false;
 
     // deltas
@@ -11,10 +7,64 @@ var Player = (function(world, position) {
         y: 1
     };
 
+    var animating = true;
+    var currentImage = 0;
+    var imageType = 'thin';
+    var direction = 'r';
+
+    // Load in a player image
+    var images = [
+        PIXI.Texture.fromImage('/src/img/hm-thin-r.png'),
+        PIXI.Texture.fromImage('/src/img/hm-wide-r.png'),
+        PIXI.Texture.fromImage('/src/img/hm-thin-l.png'),
+        PIXI.Texture.fromImage('/src/img/hm-wide-l.png'),
+        PIXI.Texture.fromImage('/src/img/hm-thin-u.png'),
+        PIXI.Texture.fromImage('/src/img/hm-wide-u.png'),
+        PIXI.Texture.fromImage('/src/img/hm-thin-d.png'),
+        PIXI.Texture.fromImage('/src/img/hm-wide-d.png'),
+    ];
+    var sprite = new world.PIXI.Sprite(images[0]);
+
     var canMove = true;
 
     // Reset the position of the sprite
     sprite.position = position;
+
+    sprite.scale = {x: 0.8, y: 0.8};
+
+    function animate()
+    {
+        var wagga = false;
+        setInterval(function() {
+            console.log('hello');
+            if(!animating) return;
+
+            wagga = !wagga;
+
+            if(wagga) {
+                if(direction == 'r') {
+                    world.player.sprite.texture = images[0];
+                } else if(direction == 'l') {
+                    world.player.sprite.texture = images[2];
+                } else if(direction == 'u') {
+                    world.player.sprite.texture = images[4];
+                } else if(direction == 'd') {
+                    world.player.sprite.texture = images[6];
+                }
+            } else {
+                if(direction == 'r') {
+                    world.player.sprite.texture = images[1];
+                } else if(direction == 'l') {
+                    world.player.sprite.texture = images[3];
+                } else if(direction == 'u') {
+                    world.player.sprite.texture = images[5];
+                } else if(direction == 'd') {
+                    world.player.sprite.texture = images[7];
+                }
+            }
+
+        }, 200);
+    }
 
     // Handle updating the player
     function update()
@@ -46,7 +96,8 @@ var Player = (function(world, position) {
         collidingWith: [],
         hitWall: hitWall,
         canMove: canMove,
-        drinking: false
+        drinking: false,
+        animate: animate
     };
 
 });
