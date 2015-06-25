@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
 
         // Create a player and add it to the stage
-        game.world.player = new Player(game.world, {x: 1, y: 1});
+        game.world.player = new Player(game.world, {x: 220, y: 250});
 
         game.world.walls = [
             // Top & bottom walls
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function() {
         game.world.ghosts = [
             new Ghost(game.world, {x: 105, y: 55})
         ];
-        
+
         for(index in game.world.walls) {
             stage.addChild(game.world.walls[index].rectangle);
             // game.world.walls[index].checkPlayerCollision();
@@ -208,11 +208,11 @@ document.addEventListener("DOMContentLoaded", function() {
             //This should be the super collectable
             // new Collectable(game.world, {x: 400, y: 400})
         ];
-        
-        generateCollectables([
-            [0,1,1,1,1,0,0,0],
-            [1,1,1,1,1,1,1,1]
-        ]);
+
+        // generateCollectables([
+        //     [0,1,1,1,1,0,0,0],
+        //     [1,1,1,1,1,1,1,1]
+        // ]);
 
         for (index in game.world.ghosts) {
             stage.addChild(game.world.ghosts[index].sprite);

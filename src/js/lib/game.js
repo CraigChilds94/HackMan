@@ -1,5 +1,20 @@
 var Game = (function(world) {
 
+    world.showGameOver = function() {
+
+        var message = "Game Over, you suck.";
+
+        var style = {
+            font: '60px courier new',
+            fill: '#ffffff'
+        };
+
+        var text = new PIXI.Text(message, style);
+        text.x = 50;
+        text.y = 200;
+        world.stage.addChild(text);
+    };
+
     /**
      * Here's where we will bind the events for our game
      */

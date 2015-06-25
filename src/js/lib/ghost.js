@@ -1,9 +1,9 @@
 var Ghost = (function(world, position) {
 
     // Load in a player image
-    var sprite = new world.PIXI.Sprite.fromImage('/src/img/pol-r.png'); 
+    var sprite = new world.PIXI.Sprite.fromImage('/src/img/pol-r.png');
 
-    var hitWall = false;   
+    var hitWall = false;
 
     // deltas
     var delta = {
@@ -12,7 +12,7 @@ var Ghost = (function(world, position) {
     };
 
     // Reset the position of the sprite
-    sprite.position = position;    
+    sprite.position = position;
 
     // Handle updating the player
     function update()
@@ -43,6 +43,7 @@ var Ghost = (function(world, position) {
 
     function onCollision() {
     	world.status.removeLife();
+        world.player.die();
     }
 
     // Return public data

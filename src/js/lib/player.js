@@ -7,6 +7,8 @@ var Player = (function(world, position) {
         y: 1
     };
 
+    var spawnPoint = position;
+
     var animating = true;
     var currentImage = 0;
     var imageType = 'thin';
@@ -32,11 +34,21 @@ var Player = (function(world, position) {
 
     sprite.scale = {x: 0.8, y: 0.8};
 
+    function die()
+    {
+        if(world.status.lives <= 0) {
+            world.showGameOver();
+            world.player.canMove = false;
+        } else {
+            world.player.sprite.position.x = world.player.spawnPoint.x;
+            world.player.sprite.position.y = world.player.spawnPoint.y;
+        }
+    }
+
     function animate()
     {
         var wagga = false;
         setInterval(function() {
-            console.log('hello');
             if(!animating) return;
 
             wagga = !wagga;
@@ -98,7 +110,9 @@ var Player = (function(world, position) {
         canMove: canMove,
         drinking: false,
         animate: animate,
-        direction: direction
+        direction: direction,
+        die: die,
+        spawnPoint: spawnPoint
     };
 
 });
