@@ -50,6 +50,12 @@ var Wall = (function(world, properties) {
 
             var collidingWith = ghost.collidingWith.indexOf(this) !== -1;
 
+            if (collidingWith)
+            {
+                ghost.hitWall = false;
+                ghost.collidingWith.splice(ghost.collidingWith.indexOf(this),1);
+            }
+
             if (xdist > -ghost.sprite.width && xdist < size.width)
             {
                 var ydist = (ghost.sprite.y + ghost.delta.y) - position.y;
@@ -64,13 +70,6 @@ var Wall = (function(world, properties) {
                     return;
                 }
             }
-
-            if (collidingWith)
-            {
-                ghost.hitWall = false;
-                ghost.collidingWith.splice(ghost.collidingWith.indexOf(this),1);
-            }
-
         }
     }
 

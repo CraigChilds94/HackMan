@@ -41,34 +41,36 @@ document.addEventListener("DOMContentLoaded", function() {
         var text = new PIXI.Text(message, style);
         text.x = 230;
         text.y = 200;
-        world.stage.addChild(text);
 
-        world.player.canMove = false;
+        if(world.status.lives > 0) {
+            world.stage.addChild(text);
+            world.player.canMove = false;
 
-        $(document).on('keydown', function(e) {
-            e = e || window.event;
-            if (e.keyCode == '32') {
-                world.player.drinking = true;
+            $(document).on('keydown', function(e) {
+                e = e || window.event;
+                if (e.keyCode == '32') {
+                    world.player.drinking = true;
 
-                setTimeout(function () {
-                    world.stage.removeChild(text);
-                }, 1000);
-            }
-        });
-
-        $(document).on('keyup', function(e) {
-            e = e || window.event;
-            if (e.keyCode == '32') {
-
-                if(world.player.drinking) {
-                    world.player.canMove = true;
-                    world.player.drinking = false;
-
-                    clearInterval(interval);
-                    setInterval(drinkText, drinkingDelay);
+                    setTimeout(function () {
+                        world.stage.removeChild(text);
+                    }, 1000);
                 }
-            }
-        });
+            });
+
+            $(document).on('keyup', function(e) {
+                e = e || window.event;
+                if (e.keyCode == '32') {
+
+                    if(world.player.drinking) {
+                        world.player.canMove = true;
+                        world.player.drinking = false;
+
+                        clearInterval(interval);
+                        setInterval(drinkText, drinkingDelay);
+                    }
+                }
+            });
+        }
     };
 
     var interval = setInterval(drinkText, drinkingDelay);
@@ -89,6 +91,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // actually render
         render();
     }, 1000);
+
+    setInterval(addGhost, 5000);
 
     function render() {
         requestAnimationFrame(render);
@@ -111,11 +115,21 @@ document.addEventListener("DOMContentLoaded", function() {
         renderer.render(stage);
     }
 
+    function addGhost()
+    {
+        var types = ['pol', 'fbi', 'nsa'];
+        var index = Math.floor( (Math.random() * 3));
+        var ghost = new Ghost(game.world, {x: 105, y: 55}, types[index]);
+
+        game.world.stage.addChild(ghost.sprite);
+        game.world.ghosts.push(ghost);
+    }
+
     function createGameObjects()
     {
 
         // Create a player and add it to the stage
-        game.world.player = new Player(game.world, {x: 1, y: 1});
+        game.world.player = new Player(game.world, {x: 220, y: 250});
 
         game.world.walls = [
             // Top & bottom walls
@@ -195,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
             new Ghost(game.world, {x: 655, y: 55},'fbi'),
             new Ghost(game.world, {x: 105, y: 455},'nsa')
         ];
-        
+
         for(index in game.world.walls) {
             stage.addChild(game.world.walls[index].rectangle);
             // game.world.walls[index].checkPlayerCollision();
@@ -324,12 +338,6 @@ document.addEventListener("DOMContentLoaded", function() {
             new Collectable(game.world, {x: 620, y: 525}),
             new Collectable(game.world, {x: 660, y: 525}),
         ];
-        
-        // generateCollectables([
-        //     [0,0,0,0,0,0,0,0],
-        //     [0,0,1,1,1,1,1,1],
-        //     [0,0,1,1,1,1,1,1]
-        // ]);
 
         var objs = game.world.ghosts.concat(game.world.collectables);
 

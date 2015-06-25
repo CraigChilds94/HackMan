@@ -12,12 +12,10 @@ var Ghost = (function(world, position, type) {
             break;
         case "nsa":
             sprite = new world.PIXI.Sprite.fromImage('/src/img/nsa-r.png');
-            break;        
+            break;
     }
 
-    // Load in a player image
-
-    var hitWall = false;   
+    var hitWall = false;
 
     // deltas
     var delta = {
@@ -25,19 +23,25 @@ var Ghost = (function(world, position, type) {
         y: 1
     };
 
+    sprite.scale = {x: 0.9, y: 0.9};
+
     // Reset the position of the sprite
-    sprite.position = position;    
+    sprite.position = position;
 
     // Handle updating the player
     function update()
     {
         if(!this.hitWall && inBounds()) {
-            sprite.position.x += delta.x;
-            sprite.position.y += delta.y;
+            sprite.position.x += delta.x * 1.2;
+            sprite.position.y += delta.y * 1.2;
         }
         else {
         	delta.x = getRandomDelta();
-        	delta.y = delta.x == 0 ? getRandomDelta() : 0;
+        	delta.y = 0;
+
+            while(delta.y == 0 && delta.x == 0) {
+                delta.y = getRandomDelta();
+            }
         }
     }
 
@@ -57,6 +61,7 @@ var Ghost = (function(world, position, type) {
 
     function onCollision() {
     	world.status.removeLife();
+        world.player.die();
     }
 
     // Return public data
