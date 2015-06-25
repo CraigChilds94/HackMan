@@ -32,8 +32,8 @@ var Ghost = (function(world, position, type) {
     function update()
     {
         if(!this.hitWall && inBounds()) {
-            sprite.position.x += delta.x;
-            sprite.position.y += delta.y;
+            sprite.position.x += delta.x * 1.2;
+            sprite.position.y += delta.y * 1.2;
         }
         else {
         	delta.x = getRandomDelta();

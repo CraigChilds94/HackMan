@@ -21,6 +21,11 @@ var Wall = (function(world, properties) {
 
         var collidingWith = world.player.collidingWith.indexOf(this) !== -1;
 
+        if (collidingWith) {
+            world.player.hitWall = false;
+            world.player.collidingWith.splice(world.player.collidingWith.indexOf(this), 1);
+        }
+
         if(xdist > -playerSprite.width && xdist < size.width)
 		{
 			var ydist = (playerSprite.position.y + world.player.delta.y) - position.y;
@@ -34,11 +39,6 @@ var Wall = (function(world, properties) {
                 return;
 			}
 		}
-
-        if (collidingWith) {
-            world.player.hitWall = false;
-            world.player.collidingWith.splice(world.player.collidingWith.indexOf(this), 1);
-        }
     }
 
     function checkGhostCollision()
@@ -49,6 +49,12 @@ var Wall = (function(world, properties) {
             var xdist = (ghost.sprite.x + ghost.delta.x) - position.x;
 
             var collidingWith = ghost.collidingWith.indexOf(this) !== -1;
+
+            if (collidingWith)
+            {
+                ghost.hitWall = false;
+                ghost.collidingWith.splice(ghost.collidingWith.indexOf(this),1);
+            }
 
             if (xdist > -ghost.sprite.width && xdist < size.width)
             {
@@ -64,13 +70,6 @@ var Wall = (function(world, properties) {
                     return;
                 }
             }
-
-            if (collidingWith)
-            {
-                ghost.hitWall = false;
-                ghost.collidingWith.splice(ghost.collidingWith.indexOf(this),1);
-            }
-
         }
     }
 
