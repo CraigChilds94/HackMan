@@ -186,8 +186,8 @@ document.addEventListener("DOMContentLoaded", function() {
             new Wall(game.world, {x:315, y:380, width: 90, height:10}),
             new Wall(game.world, {x:395, y:380, width: 90, height:10}),
 
-            new Wall(game.world, {x:270, y:215, width: 70, height:10}),
-            new Wall(game.world, {x:455, y:215, width: 80, height:10}),
+            new Wall(game.world, {x:270, y:210, width: 70, height:10}),
+            new Wall(game.world, {x:455, y:210, width: 80, height:10}),
 
             new Wall(game.world, {x:315, y:155, width: 90, height:10}),
             new Wall(game.world, {x:395, y:155, width: 90, height:10}),
