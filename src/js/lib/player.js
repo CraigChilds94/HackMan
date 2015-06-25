@@ -15,8 +15,20 @@ var Player = (function(world, position) {
     // Handle updating the player
     function update()
     {
-        sprite.position.x += delta.x;
-        sprite.position.y += delta.y;
+        if(inBounds()) {
+            sprite.position.x += delta.x;
+            sprite.position.y += delta.y;
+        }
+    }
+
+    // Check if player in bounds
+    function inBounds()
+    {
+        var xPos = sprite.position.x + delta.x;
+        var yPos = sprite.position.y + delta.y;
+
+        return (xPos >= 0 && xPos + sprite.width <= 800)
+            && (yPos >= 0 && yPos + sprite.height <= 600);
     }
 
     // Return public data
