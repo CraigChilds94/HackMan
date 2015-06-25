@@ -1,0 +1,25 @@
+body {
+	font-family: 'Press Start 2P', cursive;
+	background:yellow;
+}
+
+h1 {text-align:center}
+img {display:block;
+	margin:0 auto;}
+
+#canvas {
+	height:600px;
+	border: 1px solid #000;
+}
+
+#canvas-container {
+	width:800px;
+	margin:0 40px;	
+	background:#fff;
+}
+
+#score {overflow:hidden;}
+.row {overflow:hidden;}
+
+.pull-left{float:left;}
+.pull-right{float:right;}
